@@ -1,0 +1,26 @@
+.contactForm{
+    padding: 20px 10px;
+    display: block;
+    border: 1px solid #000;
+    width: 700px;  
+}
+.contactForm__item{       
+    margin-bottom: 30px;
+}
+.contactForm__label{    
+    width: 150px;   
+}
+.contactForm__input{    
+    display: block;  
+    width: 250px; 
+    height: 25px;
+    margin-top: 10px;  
+}
+.contactForm__addBtn{
+    padding: 5px;
+    width: 150px;
+    background-color: #fff;
+    border: 1px solid gray;
+    opacity: 70%;
+    border-radius: 4px;
+}

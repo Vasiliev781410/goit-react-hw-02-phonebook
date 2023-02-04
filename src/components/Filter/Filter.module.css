@@ -1,0 +1,12 @@
+.filter__label{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+
+.filter__input{
+    display: block;
+    margin-top: 10px;
+    height: 20px;
+   
+}
