@@ -46,7 +46,8 @@ export class ContactBook extends Component {
           this.contactList = [];
       }       
   }
-  deleteContact= evt => {   
+  deleteContact= evt => { 
+    this.contactList = [...this.state.contacts];  
     const indexDeletedElem = this.contactList.findIndex(contact => contact.id === evt.target.name);
     this.contactList.splice(indexDeletedElem,1);  
     this.setState({contacts: this.contactList});
