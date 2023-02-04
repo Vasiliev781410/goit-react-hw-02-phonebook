@@ -49,18 +49,21 @@ export class ContactBook extends Component {
       }                 
   }
 
-  deleteContact= evt => { 
-    let indexDeletedElem = 0;
-    indexDeletedElem = this.contactList.findIndex(contact => contact.id === evt.target.name);
-    if (indexDeletedElem >= 0){
-      this.contactList.splice(indexDeletedElem,1); 
-    } 
-    const allContactList = [...this.state.contacts];
-    indexDeletedElem = allContactList.findIndex(contact => contact.id === evt.target.name);    
-    if (indexDeletedElem >= 0){
-      allContactList.splice(indexDeletedElem,1);
-    }
+  deleteContact= evt => {                               
+    // удаляю из отфильтрованного списка
+    this.deleteContactFromArray(this.contactList,evt.target.name);
+    // удаляю из общего списка контактов
+    let allContactList = [...this.state.contacts];
+    allContactList = this.deleteContactFromArray(allContactList,evt.target.name);
     this.setState({contacts: allContactList});
+  }
+
+  deleteContactFromArray(contactListParam,nameDelete){     
+    const indexDeletedElem = contactListParam.findIndex(contact => contact.id === nameDelete);
+    if (indexDeletedElem >= 0){
+      contactListParam.splice(indexDeletedElem,1); 
+    } 
+    return contactListParam;  
   }
   
   render(){    
