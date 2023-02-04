@@ -6,10 +6,10 @@ import { nanoid } from 'nanoid'
 
 const  initialState = {
   contacts: [
-    {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+    {id: nanoid(), name: 'Rosie Simpson', number: '459-12-56'},
+    {id: nanoid(), name: 'Hermione Kline', number: '443-89-12'},
+    {id: nanoid(), name: 'Eden Clements', number: '645-17-79'},
+    {id: nanoid(), name: 'Annie Copeland', number: '227-91-26'},
   ],
   filter: '',
 }
@@ -39,18 +39,28 @@ export class ContactBook extends Component {
   };
 
   findContact(nameContact){
-      const newContactList = this.state.contacts.filter(contact=>contact.name.toLowerCase().includes(nameContact.toLowerCase()));
-      if (newContactList.length !== 0){
-        this.contactList = [...newContactList];      
-      }else{     
-          this.contactList = [];
-      }       
+      //console.log(`filter ${nameContact}`);      
+      //console.log(newContactList);
+      if (nameContact === ""){
+        this.contactList = [...this.state.contacts]; 
+      } else{
+        const newContactList = this.state.contacts.filter(contact=>contact.name.toLowerCase().includes(nameContact.toLowerCase()));
+          newContactList.length !== 0 ? this.contactList = [...newContactList] :  this.contactList = [];            
+      }                 
   }
+
   deleteContact= evt => { 
-    this.contactList = [...this.state.contacts];  
-    const indexDeletedElem = this.contactList.findIndex(contact => contact.id === evt.target.name);
-    this.contactList.splice(indexDeletedElem,1);  
-    this.setState({contacts: this.contactList});
+    let indexDeletedElem = 0;
+    indexDeletedElem = this.contactList.findIndex(contact => contact.id === evt.target.name);
+    if (indexDeletedElem >= 0){
+      this.contactList.splice(indexDeletedElem,1); 
+    } 
+    const allContactList = [...this.state.contacts];
+    indexDeletedElem = allContactList.findIndex(contact => contact.id === evt.target.name);    
+    if (indexDeletedElem >= 0){
+      allContactList.splice(indexDeletedElem,1);
+    }
+    this.setState({contacts: allContactList});
   }
   
   render(){    

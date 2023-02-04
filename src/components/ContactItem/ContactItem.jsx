@@ -8,7 +8,7 @@ export const ContactItem = ({contact,onDeleteContact})=>(
 );
 
 ContactItem.propTypes = {  
-    contact: PropTypes.exact({
+    contact: PropTypes.shape({
         id: PropTypes.string,
         name: PropTypes.string,
         number: PropTypes.string,}),
