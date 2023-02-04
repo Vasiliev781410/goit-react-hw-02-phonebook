@@ -10,7 +10,7 @@ export const Filter = ({onChange, value})=>{
     )
 }
 
-Filter.protoTypes = {
+Filter.propTypes = {
     onChange: PropTypes.func,
     value: PropTypes.string,
 }
