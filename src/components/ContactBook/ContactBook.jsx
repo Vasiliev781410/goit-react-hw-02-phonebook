@@ -13,7 +13,6 @@ export class ContactBook extends Component {
     {id: nanoid(), name: 'Annie Copeland', number: '227-91-26'},
   ],
   filter: '',};
-  contactList = [...this.state.contacts];
 
   handleSubmit = ({name, number}, evt) => {   
     evt.preventDefault();    
@@ -21,8 +20,7 @@ export class ContactBook extends Component {
     if (indexContact === -1){
       const newContact = {id: nanoid(), name: name, number: number}; 
       const newList =  [...this.state.contacts,newContact]; 
-      this.setState({contacts: newList}); 
-      this.contactList = newList;
+      this.setState({contacts: newList});     
     }else{
       alert(`${name} is already in contacts`);
     }    
